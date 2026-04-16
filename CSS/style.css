@@ -1,6 +1,17 @@
 body {
     font-family: Arial;
     margin: 0;
+    padding-top: 70px;
+}
+
+.nav-scrooll {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: 0.9s;
+}
+
+.navbar .nav-link,
+.navbar-brand {
+    color: white !important;
 }
 
 header {
@@ -12,10 +23,38 @@ header {
 }
 
 .hero {
-    text-align: center;
-    padding: 50px;
-    background: url('../img/Fondo.png') no-repeat center/cover;
-    color: white;
+    position: relative;
+    height: 50vh;
+    overflow: hidden;
+}
+
+.video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* CONTENIDO ENCIMA */
+.contenido {
+    position: relative;
+    z-index: 1;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
 .productos {

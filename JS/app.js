@@ -1,8 +1,8 @@
 const productos = [
-    { id: 1, nombre: "Viaje a Cartagena", precio: 800000},
-    { id: 2, nombre: "Tour San Andres", precio: 1200000},
-    { id: 3, nombre: "Viaje a Santa Marta", precio: 900000},
-    { id: 4, nombre: "Tour Medellin", precio: 700000},
+    { id: 1, nombre: "Viaje a Cartagena", precio: 800000, img: "img/Cartagena.png"},
+    { id: 2, nombre: "Tour San Andres", precio: 1200000, img: "img/San_Andres.png"},
+    { id: 3, nombre: "Viaje a Santa Marta", precio: 900000, img: "img/Santa_Marta.jpg"},
+    { id: 4, nombre: "Tour Medellin", precio: 700000, img: "img/Medellin.jpg"},
 ];
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -15,11 +15,12 @@ function mostrarProductos() {
 
         col.innerHTML = `
             <div class="card h-100 shadow-lg">
-                <img src="#" class="card-img-top" alt="viaje">
+                <img src="${prod.img}" class="card-img-top" alt="${prod.nombre}">
                 <div class="card-body text-center">
                     <h5 class="card-title">${prod.nombre}</h5>
                     <p class="card-text">$${prod.precio}</p>
-                    <button class="btn btn-primary btn-lg w-100" onclick="agregarCarrito(${prod.id})">
+                    <button class="btn btn-primary btn-lg w-100"
+                    onclick="agregarCarrito(${prod.id})">
                         Agregar
                     </button>
                 </div>
