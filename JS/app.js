@@ -3,8 +3,8 @@ const productos = [
     { id: 2, nombre: "Tour San Andres", precio: 1200000, img: "img/San_Andres.png"},
     { id: 3, nombre: "Viaje a Santa Marta", precio: 900000, img: "img/Santa_Marta.jpg"},
     { id: 4, nombre: "Tour Medellin", precio: 700000, img: "img/Medellin.jpg"},
-    { id: 4, nombre: "Tour Medellin", precio: 500000, img: "img/Cali.jpg"},
-    { id: 4, nombre: "Tour Medellin", precio: 900000, img: "img/NevadoTolima.jpg"},
+    { id: 5, nombre: "Tour Medellin", precio: 500000, img: "img/Cali.jpg"},
+    { id: 6, nombre: "Tour Medellin", precio: 900000, img: "img/NevadoTolima.jpg"},
 ];
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
