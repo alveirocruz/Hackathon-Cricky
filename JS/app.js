@@ -3,6 +3,8 @@ const productos = [
     { id: 2, nombre: "Tour San Andres", precio: 1200000, img: "img/San_Andres.png"},
     { id: 3, nombre: "Viaje a Santa Marta", precio: 900000, img: "img/Santa_Marta.jpg"},
     { id: 4, nombre: "Tour Medellin", precio: 700000, img: "img/Medellin.jpg"},
+    { id: 4, nombre: "Tour Medellin", precio: 500000, img: "img/Cali.jpg"},
+    { id: 4, nombre: "Tour Medellin", precio: 900000, img: "img/NevadoTolima.jpg"},
 ];
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -20,7 +22,7 @@ function mostrarProductos() {
                     <h5 class="card-title">${prod.nombre}</h5>
                     <p class="card-text">$${prod.precio}</p>
                     <button class="btn btn-primary btn-lg w-100"
-                    onclick="agregarCarrito(${prod.id})">
+                        onclick="agregarCarrito(${prod.id})">
                         Agregar
                     </button>
                 </div>
@@ -32,6 +34,11 @@ function mostrarProductos() {
 
 function agregarCarrito(id) {
     const producto = productos.find(p => p.id === id);
+
+    if (!producto) {
+        console.error("Producto no encontrado");
+        return;
+    }
     carrito.push(producto);
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -40,21 +47,37 @@ function agregarCarrito(id) {
 }
 
 function mostrarCarrito() {
-    const lista = document.getElementById("lista-carrito");
-    lista.innerHTML = "";
+    const contenedor = document.getElementById("lista-carrito");
+    const totalElemento = document.getElementById("total");
+
+    contenedor.innerHTML = "";
+    let total = 0;
 
     carrito.forEach((prod, index) => {
-        const li = document.createElement("li");
-        li.classList.add("list-group-item", "d-flex", "justify-content-betwee");
+        const col = document.createElement("div");
+        col.classList.add("col-md-4", "mb-4");
 
-        li.innerHTML = `
-            ${prod.nombre} - $${prod.precio}
-            <button class="btn btn-danger btn-sm" onclick="eliminarProducto(${index})">❌</button>
+        col.innerHTML = `
+            <div class="card shadow">
+                <img src="${prod.img}" class="card-img-top">
+
+                <div class="card-body text-center">
+                    <h5>${prod.nombre}</h5>
+                    <p>$${prod.precio.toLocaleString()}</p>
+
+                    <button class="btn btn-danger"
+                        onclick="eliminarProducto(${index})">
+                        Eliminar ❌
+                    </button>
+                </div>
+            </div>
         `;
 
-        lista.appendChild(li);
+        contenedor.appendChild(col)
+        total += prod.precio;
     });
 
+    totalElemento.textContent = total.toLocaleString();
     document.getElementById("contador").textContent = carrito.length;
 }
 
@@ -68,3 +91,9 @@ function eliminarProducto(index) {
 
 mostrarProductos();
 mostrarCarrito();
+
+function vaciarCarrito() {
+    carrito = [];
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    mostrarCarrito();
+}

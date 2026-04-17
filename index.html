@@ -13,7 +13,7 @@
         <div class="container">
 
             <a class="navbar-brand" href="#">
-                <img src="img/Logo.png" width="40"> Cricky
+                <img src="img/Logo.png" width="100"> Cricky
             </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
@@ -21,15 +21,12 @@
 
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Viajes</a></li>
+                    <li class="nav-item"><a class="nav-link " href="#">Inicio</a></li>
                     <li class="nav-link">
-                        <a class="nav-link" href="#">
-                            Carrito 🛒 <span class="badge bg-warning text-dark" id="contador">0</span>
+                        <a class="nav-link" href="#carrito">
+                            Carrito <span class="badge bg-warning text-dark" id="contador">0</span>
                         </a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#">Inicio sesion</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Registrarse</a></li>
                 </ul>
             </div>
 
@@ -40,24 +37,32 @@
         <video autoplay muted loop playsinline class="video-bg">
         <source src="video/video.mp4" type="video/mp4">
     </video>
-        <div class="container">
+        <div class="container text-center ">
             <h1>Exprora el mundo con Cricky</h1>
             <p>Los mejores destinos al mejor precio</p>
             <a href="#productos" class="btn btn-warning">Ver destinos</a>
         </div>
     </section>
 
-    <section class="container my-5">
+    <section class="container-fluid my-5 fondo-seccion">
         <h2 class="text-center mb-4">Destinos disponibles</h2>
         <div class="row" id="productos"></div>
     </section>
 
-    <section class="container my-5">
-        <h2>Carrito de compras</h2>
-        <ul class="list-group" id="lista-carrito"></ul>
+    <section id="carrito" class="container-fluid my-5 fondo-seccion">
+        <h2 class="text-center mb-4">Carrito de compras</h2>
+        <div id="lista-carrito" class="row"></div>
     </section>
 
-    <section class="bg-light text-center p-5">
+    <div class="mt-4">
+        <h4>Total: $<span id="total">0</span></h4>
+    </div>
+
+    <button class="btn btn-warning mt-2" onclick="vaciarCarrito()">
+        Vaciar carrito
+    </button>
+
+    <section class="bg-light text-center p-5 fondo-seccion">
         <h3>Pagos comodos y seguros</h3>
         <img src="img/visa.png" class="img-fluid mt-3" width="80">
         <img src="img/Mastercard.webp" class="img-fluid mt-3" width="80">
@@ -66,7 +71,7 @@
         <img src="img/Nequi.avif" class="img-fluid mt-3" width="80">
     </section>
 
-    <section class="text-center p-5">
+    <section class="text-center p-5 fondo-seccion">
         <h3>¿Necesitas ayuda?</h3>
         <p>Escribannos por WhatsApp o llamannos</p>
 
